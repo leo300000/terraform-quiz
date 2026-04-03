@@ -1,16 +1,74 @@
-# React + Vite
+# 🏔️ Terraform Quiz
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Site interactif pour tester et pratiquer les bases de Terraform.  
+6 thèmes couverts, avec des QCM et des exercices de complétion de code HCL.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Thèmes disponibles
 
-## React Compiler
+| Thème | Contenu |
+|---|---|
+| 🏗️ Les bases | init, plan, apply, destroy, fmt, workflow |
+| 🔌 Providers | configuration, alias, required_providers, lock file |
+| 📦 Resources | syntaxe, références, count, depends_on, lifecycle |
+| 🔧 Variables & Outputs | variable, locals, TF_VAR_, outputs |
+| 💾 State | tfstate, remote backend S3, import, locking |
+| 🧩 Modules | structure, source, inputs/outputs, init |
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Prérequis
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- [Node.js](https://nodejs.org/) v18 ou supérieur
+- npm (inclus avec Node.js)
+
+---
+
+## Lancer l'atelier en local
+
+```bash
+# 1. Cloner le repo
+git clone https://github.com/leo300000/terraform-quiz.git
+cd terraform-quiz
+
+# 2. Installer les dépendances
+npm install
+
+# 3. Démarrer le serveur de développement
+npm run dev
+```
+
+Ouvre ensuite [http://localhost:5173](http://localhost:5173) dans ton navigateur.
+
+---
+
+## Build pour la production
+
+```bash
+npm run build
+```
+
+Les fichiers statiques sont générés dans le dossier `dist/`.  
+Tu peux les servir avec n'importe quel serveur HTTP (Nginx, Apache, Netlify, Vercel, GitHub Pages...).
+
+---
+
+## Structure du projet
+
+```
+terraform-quiz/
+├── src/
+│   ├── components/
+│   │   ├── Home.jsx       # Page d'accueil — sélection du thème
+│   │   ├── Quiz.jsx       # Moteur de quiz (QCM + complétion de code)
+│   │   └── Results.jsx    # Écran de résultats avec score et révision
+│   ├── data/
+│   │   └── questions.js   # Toutes les questions classées par thème
+│   ├── App.jsx
+│   └── App.css
+├── index.html
+└── package.json
+```
+
+Pour ajouter des questions, édite `src/data/questions.js` en suivant le format existant.
